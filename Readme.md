@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
-* Студент: [Владимир Артюхов](https://up.htmlacademy.ru/nodejs-api/6/user/1095935).
-* Наставник: `Неизвестно`.
+- Студент: [Владимир Артюхов](https://up.htmlacademy.ru/nodejs-api/6/user/1095935).
+- Наставник: [Rail Sakhaviev](https://htmlacademy.ru/profile/id1331891).
 
 ---
 
