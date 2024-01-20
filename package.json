@@ -8,6 +8,7 @@
     "node.js"
   ],
   "main": "main.js",
+  "type": "module",
   "scripts": {
     "server:mock": "json-server ./mocks/mock-server-data.json --port 3123",
     "start": "npm run build && node ./dist/main.cli.js",
@@ -15,7 +16,11 @@
     "lint": "eslint src/ --ext .ts",
     "compile": "tsc -p tsconfig.json",
     "clean": "rimraf dist",
-    "ts": "ts-node"
+    "ts": "node --loader ts-node/esm"
+  },
+  "dependencies": {
+    "dayjs": "1.11.10",
+    "got": "^14.0.0"
   },
   "devDependencies": {
     "@types/node": "18.17.17",
@@ -30,7 +35,6 @@
     "tslib": "2.6.2",
     "typescript": "5.2.2"
   },
-  "type": "module",
   "engines": {
     "node": "^18.0.0",
     "npm": ">=8"

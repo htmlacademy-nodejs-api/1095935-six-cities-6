@@ -1,27 +1,54 @@
 {
-	"api": {
-		"title": ["Nice, cozy, warm big bed apartment", "Wood and stone place", "White castle", "Beautiful luxurious apartment at great location", "Wood and stone place"],
-		"description": ["A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.", "This is a place for dreamers to reset, reflect, and create. Designed with a pace in mind, our hope is that you enjoy every part of your stay; from making local coffee by drip in the morning, choosing the perfect record to put on as the sun sets.", "I am happy to welcome you to my apartment in the city center! Three words: location, cosy and chic!", "Design interior in most sympathetic area! Complitely renovated, well-equipped, cosy studio in idyllic, over 100 years old wooden house. Calm street, fast connection to center and airport.", "Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance."],
-		"publishDate": ["2024-01-10T22:52:50.749Z", "2024-01-11T22:52:50.749Z", "2024-01-17T10:02:50.749Z", "2024-01-15T20:15:00.749Z", "2024-01-14T08:31:07.749Z"],
-		"city": ["Dusseldorf", "Amsterdam", "Brussels", "Hamburg", "Cologne"],
-		"preview": ["https://loremflickr.com/320/240/mansion", "https://loremflickr.com/320/240/mansion", "https://loremflickr.com/320/240/mansion", "https://loremflickr.com/320/240/mansion", "https://loremflickr.com/320/240/mansion"],		
-		"images": ["https://loremflickr.com/800/600/apartment", "https://loremflickr.com/800/600/apartment", "https://loremflickr.com/800/600/apartment", "https://loremflickr.com/800/600/apartment", "https://loremflickr.com/800/600/apartment"],		
-		"isPremium": [true, false, false, true, false],		
-		"isFavorite": [true, true, false, true, false],		
-		"rating": ["4", "8", "3.5", "6.8", "10"],		
-		"entire": ["apartment", "house", "room", "hotel"],		
-		"bedrooms": ["1", "5", "3", "4", "2"],		
-		"adults": ["5", "3", "2", "4", "1"],		
-		"price": ["100", "400", "100000", "10", "2500"],		
-		"features": ["Breakfast", "Air conditioning", "Laptop friendly workspace", "Baby seat", "Washer", "Towels", "Fridge"],
-		"author": ["Hannah", "Pippa", "David", "Amelia", "Charles"],		
-		"reviewsAmount": ["2", "10", "4", "5", "8"],		
-		"location": [
-			{ "latitude": "52.37854", "longitude": "4.894976" },
-			{ "latitude": "50.938361", "longitude": "6.959974" },
-			{ "latitude": "48.85661", "longitude": "2.351499" },
-			{ "latitude": "51.225402", "longitude": "6.776314" },
-			{ "latitude": "52.37454", "longitude": "4.897976" }
-		]
-	}
+  "api": {
+    "titles": [
+      "Nice, cozy, warm big bed apartment",
+      "Wood and stone place",
+      "White castle",
+      "Beautiful luxurious apartment at great location",
+      "Wood and stone place"
+    ],
+    "descriptions": [
+      "A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.",
+      "This is a place for dreamers to reset, reflect, and create. Designed with a pace in mind, our hope is that you enjoy every part of your stay; from making local coffee by drip in the morning, choosing the perfect record to put on as the sun sets.",
+      "I am happy to welcome you to my apartment in the city center! Three words: location, cosy and chic!",
+      "Design interior in most sympathetic area! Complitely renovated, well-equipped, cosy studio in idyllic, over 100 years old wooden house. Calm street, fast connection to center and airport.",
+      "Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance."
+    ],
+    "citys": ["Dusseldorf", "Amsterdam", "Brussels", "Hamburg", "Cologne"],
+    "preview": "https://loremflickr.com/320/240/mansion",
+    "image": "https://loremflickr.com/800/600/apartment",
+    "entires": ["apartment", "house", "room", "hotel"],
+    "features": [
+      "Breakfast",
+      "Air conditioning",
+      "Laptop friendly workspace",
+      "Baby seat",
+      "Washer",
+      "Towels",
+      "Fridge"
+    ],
+    "names": ["Hannah", "Pippa", "David", "Amelia", "Charles"],
+    "emails": [
+      "erat.nonummy@google.couk",
+      "mauris.sagittis@hotmail.couk",
+      "dapibus.gravida@aol.ca",
+      "aliquet.nec@outlook.edu",
+      "vivamus@outlook.net"
+    ],
+    "avatar": "https://loremflickr.com/200/200/portret",
+    "passwords": [
+      "TJF71ESP2VA",
+      "VVB81PGL3OI",
+      "RLO35TZD4NG",
+      "MGF63ZCL2TN",
+      "EDX89BLL4WU"
+    ],
+    "locations": [
+      { "latitude": "52.37854", "longitude": "4.894976" },
+      { "latitude": "50.938361", "longitude": "6.959974" },
+      { "latitude": "48.85661", "longitude": "2.351499" },
+      { "latitude": "51.225402", "longitude": "6.776314" },
+      { "latitude": "52.37454", "longitude": "4.897976" }
+    ]
+  }
 }

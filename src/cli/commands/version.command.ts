@@ -1,9 +1,11 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import chalk from "chalk";
+
+import { getErrorMessage, handleTryCatch } from "../../shared/utils/index.js";
 
 import { ECommand, ICommand } from "./interfaces.js";
 import { isPackageJSONConfig } from "./guards.js";
-import chalk from "chalk";
 
 export class VersionCommand implements ICommand {
   constructor(private readonly filePath: string = "./package.json") {}
@@ -23,19 +25,17 @@ export class VersionCommand implements ICommand {
     return ECommand.Version;
   }
 
-  public async execute(..._parameters: string[]): Promise<void> {
-    try {
-      const version = this.readVersion();
-      console.info(chalk.greenBright(`Версия проекта ${version}`));
-    } catch (error: unknown) {
-      if (!(error instanceof Error)) {
-        throw error;
-      }
+  public execute(..._parameters: string[]): void {
+    const [errorRead, version] = handleTryCatch(this.readVersion());
 
+    if (errorRead) {
       console.error(
         chalk.bold.red(`Ошибка чтения версии из: ${this.filePath}`)
       );
-      console.error(chalk.bold.red(`Детали: ${error.message}`));
+      console.error(chalk.bold.red(getErrorMessage(errorRead)));
+      return;
     }
+
+    console.info(chalk.greenBright(`Версия проекта ${version}`));
   }
 }

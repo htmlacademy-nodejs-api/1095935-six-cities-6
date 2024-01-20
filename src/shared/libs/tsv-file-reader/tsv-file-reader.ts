@@ -1,90 +1,37 @@
-import { readFileSync } from "node:fs";
+import { createReadStream } from "node:fs";
+import EventEmitter from "node:events";
 
-import {
-  IOffer,
-  IOfferLocation,
-  IUser,
-  TOfferEntire,
-  TOfferFeature,
-  TUserStatus,
-} from "../../../shared/interfaces/index.js";
 import { IFileReader } from "./tsv-file-reader.interface.js";
 
-export class TSVFileReader implements IFileReader {
-  private rawData = "";
+const CHUNK_SIZE = 16384; // 16KB
 
-  constructor(private readonly filename: string) {}
-
-  private parseLocation(location: string): IOfferLocation {
-    const [latitude, longitude] = location.split(";");
-    return {
-      latitude: Number(latitude),
-      longitude: Number(longitude),
-    };
+export class TSVFileReader extends EventEmitter implements IFileReader {
+  constructor(private readonly filename: string) {
+    super();
   }
 
-  private parseAuthor(author: string): IUser {
-    const [name, email, avatar, password, status] = author.split(";");
-    return {
-      name,
-      email,
-      avatar,
-      password,
-      status: status as TUserStatus,
-    };
-  }
+  public async read(): Promise<void> {
+    const readStream = createReadStream(this.filename, {
+      highWaterMark: CHUNK_SIZE,
+      encoding: "utf-8",
+    });
 
-  public read(): void {
-    this.rawData = readFileSync(this.filename, "utf-8");
-  }
+    let remainingData = "";
+    let nextLinePosition = -1;
+    let importedRowCount = 0;
 
-  public toArray(): IOffer[] {
-    if (!this.rawData) {
-      throw new Error("Не удалось прочитать файл");
+    for await (const chunk of readStream) {
+      remainingData += chunk.toString();
+
+      while ((nextLinePosition = remainingData.indexOf("\n")) >= 0) {
+        const completeRow = remainingData.slice(0, nextLinePosition + 1);
+        remainingData = remainingData.slice(++nextLinePosition);
+        importedRowCount++;
+
+        this.emit("line", completeRow);
+      }
     }
 
-    return this.rawData
-      .split("\n")
-      .filter((row) => row.trim().length > 0)
-      .map((line) => line.split("\t"))
-      .map(
-        ([
-          title,
-          description,
-          publishDate,
-          city,
-          preview,
-          images,
-          isPremium,
-          isFavorite,
-          rating,
-          entire,
-          bedrooms,
-          adults,
-          price,
-          features,
-          author,
-          reviewsAmount,
-          location,
-        ]) => ({
-          title,
-          description,
-          publishDate,
-          city,
-          preview,
-          images: images.split(" "),
-          isPremium: isPremium === "true",
-          isFavorite: isFavorite === "true",
-          rating: Number(rating),
-          entire: entire as TOfferEntire,
-          bedrooms: Number(bedrooms),
-          adults: Number(adults),
-          price: Number(price),
-          features: features.split(" ") as TOfferFeature[],
-          author: this.parseAuthor(author),
-          reviewsAmount: Number(reviewsAmount),
-          location: this.parseLocation(location),
-        })
-      );
+    this.emit("end", importedRowCount);
   }
 }
