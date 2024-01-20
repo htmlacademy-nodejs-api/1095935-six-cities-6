@@ -1,4 +1,5 @@
-import { errorLog } from "../../shared/libs/colorize/index.js";
+import chalk from "chalk";
+
 import { TSVFileReader } from "../../shared/libs/tsv-file-reader/tsv-file-reader.js";
 
 import { ECommand, ICommand } from "./interfaces.js";
@@ -20,8 +21,8 @@ export class ImportCommand implements ICommand {
         throw error;
       }
 
-      console.error(errorLog(`Ошибка импорта данных из: ${filename}`));
-      console.error(errorLog(`Детали: ${error.message}`));
+      console.error(chalk.bold.red(`Ошибка импорта данных из: ${filename}`));
+      console.error(chalk.bold.red(`Детали: ${error.message}`));
     }
   }
 }

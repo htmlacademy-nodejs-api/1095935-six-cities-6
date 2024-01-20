@@ -1,10 +1,9 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
-import { errorLog, dataLog } from "../../shared/libs/colorize/index.js";
-
 import { ECommand, ICommand } from "./interfaces.js";
 import { isPackageJSONConfig } from "./guards.js";
+import chalk from "chalk";
 
 export class VersionCommand implements ICommand {
   constructor(private readonly filePath: string = "./package.json") {}
@@ -27,14 +26,16 @@ export class VersionCommand implements ICommand {
   public async execute(..._parameters: string[]): Promise<void> {
     try {
       const version = this.readVersion();
-      console.info(dataLog(`Версия проекта ${version}`));
+      console.info(chalk.greenBright(`Версия проекта ${version}`));
     } catch (error: unknown) {
       if (!(error instanceof Error)) {
         throw error;
       }
 
-      console.error(errorLog(`Ошибка чтения версии из: ${this.filePath}`));
-      console.error(errorLog(`Детали: ${error.message}`));
+      console.error(
+        chalk.bold.red(`Ошибка чтения версии из: ${this.filePath}`)
+      );
+      console.error(chalk.bold.red(`Детали: ${error.message}`));
     }
   }
 }

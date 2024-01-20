@@ -16,7 +16,7 @@ export class TSVFileReader implements IFileReader {
   constructor(private readonly filename: string) {}
 
   private parseLocation(location: string): IOfferLocation {
-    const [latitude, longitude] = location.split(" ");
+    const [latitude, longitude] = location.split(";");
     return {
       latitude: Number(latitude),
       longitude: Number(longitude),
@@ -24,7 +24,7 @@ export class TSVFileReader implements IFileReader {
   }
 
   private parseAuthor(author: string): IUser {
-    const [name, email, avatar, password, status] = author.split(" ");
+    const [name, email, avatar, password, status] = author.split(";");
     return {
       name,
       email,
