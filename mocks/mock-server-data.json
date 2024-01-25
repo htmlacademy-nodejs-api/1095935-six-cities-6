@@ -1,0 +1,68 @@
+{
+  "api": {
+    "titles": [
+      "Nice, cozy, warm big bed apartment",
+      "Wood and stone place",
+      "White castle",
+      "Beautiful luxurious apartment at great location",
+      "Wood and stone place"
+    ],
+    "descriptions": [
+      "A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.",
+      "This is a place for dreamers to reset, reflect, and create. Designed with a pace in mind, our hope is that you enjoy every part of your stay; from making local coffee by drip in the morning, choosing the perfect record to put on as the sun sets.",
+      "I am happy to welcome you to my apartment in the city center! Three words: location, cosy and chic!",
+      "Design interior in most sympathetic area! Complitely renovated, well-equipped, cosy studio in idyllic, over 100 years old wooden house. Calm street, fast connection to center and airport.",
+      "Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance."
+    ],
+    "cities": [
+      {
+        "name": "Paris",
+        "locations": { "latitude": 48.85661, "longitude": 2.351499 }
+      },
+      {
+        "name": "Cologne",
+        "locations": { "latitude": 50.938361, "longitude": 6.959974 }
+      },
+      {
+        "name": "Brussels",
+        "locations": { "latitude": 50.846557, "longitude": 4.351697 }
+      },
+      {
+        "name": "Amsterdam",
+        "locations": { "latitude": 52.370216, "longitude": 4.895168 }
+      },
+      {
+        "name": "Dusseldorf",
+        "locations": { "latitude": 51.225402, "longitude": 6.776314 }
+      }
+    ],
+    "preview": "https://loremflickr.com/320/240/mansion",
+    "image": "https://loremflickr.com/800/600/apartment",
+    "entires": ["apartment", "house", "room", "hotel"],
+    "features": [
+      "Breakfast",
+      "Air conditioning",
+      "Laptop friendly workspace",
+      "Baby seat",
+      "Washer",
+      "Towels",
+      "Fridge"
+    ],
+    "names": ["Hannah", "Pippa", "David", "Amelia", "Charles"],
+    "emails": [
+      "erat.nonummy@google.couk",
+      "mauris.sagittis@hotmail.couk",
+      "dapibus.gravida@aol.ca",
+      "aliquet.nec@outlook.edu",
+      "vivamus@outlook.net"
+    ],
+    "avatar": "https://loremflickr.com/200/200/portret",
+    "passwords": [
+      "TJF71ESP2VA",
+      "VVB81PGL3OI",
+      "RLO35TZD4NG",
+      "MGF63ZCL2TN",
+      "EDX89BLL4WU"
+    ]
+  }
+}

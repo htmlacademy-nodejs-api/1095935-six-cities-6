@@ -11,4 +11,5 @@ export const enum ECommand {
   Help = "--help",
   Version = "--version",
   Import = "--import",
+  Generate = "--generate"
 }
