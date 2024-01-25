@@ -24,28 +24,35 @@ export class TSVOfferGenerator implements IOfferGenerator {
     const publishDate = dayjs()
       .subtract(getRandomeNumber(FIRST_WEEK_DAY, LAST_WEEK_DAY), "day")
       .toISOString();
-    const city = getRandomItem(this.mockData.citys);
+
     const preview = this.mockData.preview;
     const images = new Array(getRandomeNumber())
-      .fill("").map(() => this.mockData.image).join(";");
-    const isPremium = (Math.random() > 0.5).toString();
-    const isFavorite = (Math.random() > 0.5).toString();
-    const rating = getRandomeNumber().toString();
+      .fill("")
+      .map(() => this.mockData.image)
+      .join(";");
+    const isPremium = Math.random() > 0.5;
+    const isFavorite = Math.random() > 0.5;
+    const rating = getRandomeNumber();
     const entire = getRandomItem(this.mockData.entires);
-    const bedrooms = getRandomeNumber().toString();
-    const adults = getRandomeNumber().toString();
-    const price = getRandomeNumber(MIN_PRICE, MAX_PRICE).toString();
+    const bedrooms = getRandomeNumber();
+    const adults = getRandomeNumber();
+    const price = getRandomeNumber(MIN_PRICE, MAX_PRICE);
     const features = getRandomItems(this.mockData.features).join(";");
-    const reviewsAmount = getRandomeNumber().toString();
+    const reviewsAmount = getRandomeNumber();
 
-    const { latitude, longitude } = getRandomItem(this.mockData.locations);
+    const {
+      name: city,
+      locations: { latitude, longitude },
+    } = getRandomItem(this.mockData.cities);
     const location = `${latitude};${longitude}`;
 
     const name = getRandomItem(this.mockData.names);
     const email = getRandomItem(this.mockData.emails);
     const password = getRandomItem(this.mockData.passwords);
     const status = Math.random() > 0.5 ? "regular" : "pro";
-    const author = [name, email, this.mockData.avatar, password, status].join(";");
+    const author = [name, email, this.mockData.avatar, password, status].join(
+      ";"
+    );
 
     return [
       title,

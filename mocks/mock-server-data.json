@@ -14,7 +14,28 @@
       "Design interior in most sympathetic area! Complitely renovated, well-equipped, cosy studio in idyllic, over 100 years old wooden house. Calm street, fast connection to center and airport.",
       "Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance."
     ],
-    "citys": ["Dusseldorf", "Amsterdam", "Brussels", "Hamburg", "Cologne"],
+    "cities": [
+      {
+        "name": "Paris",
+        "locations": { "latitude": 48.85661, "longitude": 2.351499 }
+      },
+      {
+        "name": "Cologne",
+        "locations": { "latitude": 50.938361, "longitude": 6.959974 }
+      },
+      {
+        "name": "Brussels",
+        "locations": { "latitude": 50.846557, "longitude": 4.351697 }
+      },
+      {
+        "name": "Amsterdam",
+        "locations": { "latitude": 52.370216, "longitude": 4.895168 }
+      },
+      {
+        "name": "Dusseldorf",
+        "locations": { "latitude": 51.225402, "longitude": 6.776314 }
+      }
+    ],
     "preview": "https://loremflickr.com/320/240/mansion",
     "image": "https://loremflickr.com/800/600/apartment",
     "entires": ["apartment", "house", "room", "hotel"],
@@ -42,13 +63,6 @@
       "RLO35TZD4NG",
       "MGF63ZCL2TN",
       "EDX89BLL4WU"
-    ],
-    "locations": [
-      { "latitude": "52.37854", "longitude": "4.894976" },
-      { "latitude": "50.938361", "longitude": "6.959974" },
-      { "latitude": "48.85661", "longitude": "2.351499" },
-      { "latitude": "51.225402", "longitude": "6.776314" },
-      { "latitude": "52.37454", "longitude": "4.897976" }
     ]
   }
 }

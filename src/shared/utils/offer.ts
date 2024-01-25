@@ -7,6 +7,25 @@ import {
   TUserStatus,
 } from "../interfaces/index.js";
 
+const getLocation = (location: string): IOfferLocation => {
+  const [latitude, longitude] = location.split(";");
+  return {
+    latitude: Number(latitude),
+    longitude: Number(longitude),
+  };
+};
+
+const getAuthor = (author: string): IUser => {
+  const [name, email, avatar, password, status] = author.split(";");
+  return {
+    name,
+    email,
+    avatar,
+    password,
+    status: status as TUserStatus,
+  };
+};
+
 export const createOffer = (offerData: string): IOffer => {
   const [
     title,
@@ -23,29 +42,10 @@ export const createOffer = (offerData: string): IOffer => {
     adults,
     price,
     features,
-    authorString,
+    author,
     reviewsAmount,
-    locationString,
+    location,
   ] = offerData.split("\t");
-
-  const location = ((): IOfferLocation => {
-    const [latitude, longitude] = locationString.split(";");
-    return {
-      latitude: Number(latitude),
-      longitude: Number(longitude),
-    };
-  })();
-
-  const author = ((): IUser => {
-    const [name, email, avatar, password, status] = authorString.split(";");
-    return {
-      name,
-      email,
-      avatar,
-      password,
-      status: status as TUserStatus,
-    };
-  })();
 
   return {
     title,
@@ -62,8 +62,8 @@ export const createOffer = (offerData: string): IOffer => {
     adults: Number(adults),
     price: Number(price),
     features: features.split(";") as TOfferFeature[],
-    author,
+    author: getAuthor(author),
     reviewsAmount: Number(reviewsAmount),
-    location,
+    location: getLocation(location),
   };
 };

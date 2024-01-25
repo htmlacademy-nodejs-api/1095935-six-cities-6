@@ -3,7 +3,10 @@ import { IOfferLocation } from "./offer.js";
 export interface IMockServerData {
   titles: string[];
   descriptions: string[];
-  citys: string[];
+  cities: {
+    name: string;
+    locations: IOfferLocation;
+  }[];
   preview: string;
   image: string;
   entires: string[];
@@ -12,5 +15,4 @@ export interface IMockServerData {
   emails: string[];
   avatar: string;
   passwords: string[];
-  locations: IOfferLocation[];
 }
