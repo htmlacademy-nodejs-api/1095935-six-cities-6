@@ -1,14 +1,30 @@
-import { Logger } from "./shared/libs/logger/index.js";
-import { RestConfig } from "./shared/libs/config/index.js";
+import "reflect-metadata";
+import { Container } from "inversify";
+
+import { Component } from "./shared/interfaces/index.js";
+import { ILogger, Logger } from "./shared/libs/logger/index.js";
+import {
+  RestConfig,
+  IConfig,
+  IRestSchema,
+} from "./shared/libs/config/index.js";
 
 import { RestApplication } from "./rest/index.js";
 
-async function bootstrap() {
-  const logger = new Logger();
-  const config = new RestConfig(logger);
+const bootstrap = async () => {
+  const container = new Container();
+  container
+    .bind<RestApplication>(Component.RestApplication)
+    .to(RestApplication)
+    .inSingletonScope();
+  container.bind<ILogger>(Component.Logger).to(Logger).inSingletonScope();
+  container
+    .bind<IConfig<IRestSchema>>(Component.Config)
+    .to(RestConfig)
+    .inSingletonScope();
 
-  const application = new RestApplication(logger, config);
+  const application = container.get<RestApplication>(Component.RestApplication);
   await application.init();
-}
+};
 
 bootstrap();

@@ -2,7 +2,7 @@ export {
   HelpCommand,
   ImportCommand,
   VersionCommand,
-  GenerateCommand
+  GenerateCommand,
 } from "./commands/index.js";
 
-export { CLIApplication } from "./application.js";
+export { CLIApplication } from "./cli.application.js";

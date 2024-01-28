@@ -1,14 +1,18 @@
 import { config } from "dotenv";
+import { inject, injectable } from "inversify";
+
+import { Component } from "../../interfaces/index.js";
 
 import { ILogger } from "../logger/index.js";
 
 import { IConfig } from "./config.interface.js";
 import { IRestSchema, configRestSchema } from "./rest.schema.js";
 
+@injectable()
 export class RestConfig implements IConfig<IRestSchema> {
   private readonly config: IRestSchema;
 
-  constructor(private readonly logger: ILogger) {
+  constructor(@inject(Component.Logger) private readonly logger: ILogger) {
     const parsedOutput = config();
 
     if (parsedOutput.error) {
