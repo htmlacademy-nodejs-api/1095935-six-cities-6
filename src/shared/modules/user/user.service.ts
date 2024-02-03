@@ -16,8 +16,10 @@ export class UserService implements IUserService {
     private readonly userModel: types.ModelType<UserEntity>
   ) {}
 
-  public async findById(id: string): Promise<DocumentType<UserEntity> | null> {
-    return this.userModel.findOne({ id });
+  public async findById(
+    userId: string
+  ): Promise<DocumentType<UserEntity> | null> {
+    return this.userModel.findById(userId).exec();
   }
 
   public async findByEmail(
