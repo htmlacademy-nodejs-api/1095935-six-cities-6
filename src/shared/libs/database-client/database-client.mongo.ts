@@ -4,7 +4,7 @@ import { inject, injectable } from "inversify";
 
 import { Component } from "../../interfaces/component.enum.js";
 
-import { Logger } from "../logger/index.js";
+import { ILogger } from "../logger/index.js";
 
 import { IDatabaseClient } from "./database-client.interface.js";
 
@@ -16,7 +16,7 @@ export class MongoDatabaseClient implements IDatabaseClient {
   private mongoose: typeof Mongoose;
   private isConnected: boolean;
 
-  constructor(@inject(Component.Logger) private readonly logger: Logger) {
+  constructor(@inject(Component.Logger) private readonly logger: ILogger) {
     this.isConnected = false;
   }
 

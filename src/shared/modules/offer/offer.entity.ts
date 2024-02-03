@@ -14,6 +14,7 @@ import {
 } from "../../interfaces/index.js";
 import { UserEntity } from "../user/index.js";
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export interface OfferEntity extends defaultClasses.Base {}
 
 @modelOptions({
@@ -22,6 +23,7 @@ export interface OfferEntity extends defaultClasses.Base {}
     timestamps: true,
   },
 })
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export class OfferEntity extends defaultClasses.TimeStamps {
   @prop({
     ref: UserEntity,

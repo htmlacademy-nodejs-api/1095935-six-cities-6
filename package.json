@@ -11,7 +11,8 @@
   "type": "module",
   "scripts": {
     "server:mock": "json-server ./mocks/mock-server-data.json --port 3123",
-    "start": "npm run build && node ./dist/main.rest.js",
+    "server:generate": "npm run ts src/main.cli.ts -- --generate 10 ./mocks/offers.tsv http://localhost:3123/api",
+    "start": "npm run build && node ./dist/main.cli.js",
     "start:dev": "npm run ts ./src/main.rest.ts | pino-pretty --colorize --translateTime SYS:standard",
     "docker:start": "docker compose --file ./docker-compose.yml --env-file ./.env --project-name six-cities up -d",
     "docker:enter": "docker exec -it six-cities_mongodb mongosh -u admin",

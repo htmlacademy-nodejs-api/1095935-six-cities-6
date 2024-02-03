@@ -13,4 +13,6 @@ export const getMongoURI = ({
   port,
   dbName,
 }: IGetMongoURIArgs): string =>
-  `mongodb://${username}:${password}@${host}:${port}/${dbName}?authSource=admin`;
+  `mongodb://${encodeURIComponent(
+    username
+  )}:${password}@${host}:${port}/${dbName}?authSource=admin`;

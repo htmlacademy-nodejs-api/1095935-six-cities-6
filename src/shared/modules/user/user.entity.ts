@@ -8,6 +8,7 @@ import {
 import { IUser, TUserStatus } from "../../interfaces/user.js";
 import { createSHA256 } from "../../utils/index.js";
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export interface UserEntity extends defaultClasses.Base {}
 
 @modelOptions({
@@ -16,8 +17,9 @@ export interface UserEntity extends defaultClasses.Base {}
     timestamps: true,
   },
 })
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export class UserEntity extends defaultClasses.TimeStamps implements IUser {
-  @prop({ required: true, default: "" })
+  @prop({ required: true })
   public password: string;
 
   @prop({ required: true, default: "regular" })
@@ -26,15 +28,16 @@ export class UserEntity extends defaultClasses.TimeStamps implements IUser {
   @prop({ required: true, unique: true })
   public email: string;
 
-  @prop({ required: false, default: "" })
+  @prop({ required: false })
   public avatar?: string;
 
-  @prop({ required: true, default: "" })
+  @prop({ required: true })
   public name: string;
 
   constructor(userData: IUser) {
     super();
 
+    this.password = userData.password;
     this.status = userData.status;
     this.email = userData.email;
     this.avatar = userData.avatar;

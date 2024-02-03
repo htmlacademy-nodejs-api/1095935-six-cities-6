@@ -9,7 +9,7 @@ export class CreateOfferDto {
   authorId: string;
   title: string;
   description: string;
-  publishDate: Date;
+  publishDate: string;
   city: TCity;
   preview: string;
   images: string[];
