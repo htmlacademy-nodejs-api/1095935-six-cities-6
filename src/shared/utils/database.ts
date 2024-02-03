@@ -6,12 +6,11 @@ interface IGetMongoURIArgs {
   dbName: string;
 }
 
-export function getMongoURI({
+export const getMongoURI = ({
   username,
   password,
   host,
   port,
   dbName,
-}: IGetMongoURIArgs): string {
-  return `mongodb://${username}:${password}@${host}:${port}/${dbName}?authSource=admin`;
-}
+}: IGetMongoURIArgs): string =>
+  `mongodb://${username}:${password}@${host}:${port}/${dbName}?authSource=admin`;

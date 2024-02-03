@@ -13,3 +13,4 @@ extends:
   - "htmlacademy/node"
 rules:
   quotes: [error, double]
+  "@typescript-eslint/no-unsafe-declaration-merging": [off]
