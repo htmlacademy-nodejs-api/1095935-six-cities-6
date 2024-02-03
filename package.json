@@ -13,7 +13,7 @@
     "server:mock": "json-server ./mocks/mock-server-data.json --port 3123",
     "start": "npm run build && node ./dist/main.rest.js",
     "start:dev": "npm run ts ./src/main.rest.ts | pino-pretty --colorize --translateTime SYS:standard",
-    "docker:start": "docker compose --file ./docker-compose.dev.yml --env-file ./.env --project-name six-cities up -d",
+    "docker:start": "docker compose --file ./docker-compose.yml --env-file ./.env --project-name six-cities up -d",
     "docker:enter": "docker exec -it six-cities_mongodb mongosh -u admin",
     "build": "npm run clean && npm run compile",
     "lint": "eslint src/ --ext .ts",
