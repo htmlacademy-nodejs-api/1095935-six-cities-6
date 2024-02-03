@@ -74,6 +74,24 @@ npm run server:mock
 
 Запустится мокк-сервер на порту 3123.
 
+#### Запуск режима разработки с логирование в файл
+
+```bash
+npm run start:dev
+```
+
+#### Запуск docker-контейнера с БД mongo и gui mongo-express
+
+```bash
+npm run docker:start
+```
+
+#### Подключение к docker-контейнеру
+
+```bash
+npm run docker:enter
+```
+
 ## Структура проекта
 
 ### Директория `src`

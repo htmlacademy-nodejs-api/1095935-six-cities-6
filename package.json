@@ -13,6 +13,8 @@
     "server:mock": "json-server ./mocks/mock-server-data.json --port 3123",
     "start": "npm run build && node ./dist/main.rest.js",
     "start:dev": "npm run ts ./src/main.rest.ts | pino-pretty --colorize --translateTime SYS:standard",
+    "docker:start": "docker compose --file ./docker-compose.dev.yml --env-file ./.env --project-name six-cities up -d",
+    "docker:enter": "docker exec -it six-cities_mongodb mongosh -u admin",
     "build": "npm run clean && npm run compile",
     "lint": "eslint src/ --ext .ts",
     "compile": "tsc -p tsconfig.json",
@@ -27,6 +29,7 @@
     "dotenv": "16.4.1",
     "got": "14.0.0",
     "inversify": "6.0.2",
+    "mongoose": "8.1.1",
     "pino": "8.17.2",
     "reflect-metadata": "0.2.1"
   },

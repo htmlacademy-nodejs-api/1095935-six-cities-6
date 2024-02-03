@@ -3,11 +3,17 @@ import { Container } from "inversify";
 
 import { Component } from "./shared/interfaces/index.js";
 import { ILogger, Logger } from "./shared/libs/logger/index.js";
+
 import {
   RestConfig,
   IConfig,
   IRestSchema,
 } from "./shared/libs/config/index.js";
+
+import {
+  IDatabaseClient,
+  MongoDatabaseClient,
+} from "./shared/libs/database-client/index.js";
 
 import { RestApplication } from "./rest/index.js";
 
@@ -21,6 +27,10 @@ const bootstrap = async () => {
   container
     .bind<IConfig<IRestSchema>>(Component.Config)
     .to(RestConfig)
+    .inSingletonScope();
+  container
+    .bind<IDatabaseClient>(Component.DatabaseClient)
+    .to(MongoDatabaseClient)
     .inSingletonScope();
 
   const application = container.get<RestApplication>(Component.RestApplication);
