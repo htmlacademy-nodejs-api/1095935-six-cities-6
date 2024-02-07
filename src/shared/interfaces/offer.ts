@@ -11,6 +11,14 @@ export type TOfferFeature =
   | "Towels"
   | "Fridge";
 
+export type TCity =
+  | "Paris"
+  | "Cologne"
+  | "Brussels"
+  | "Amsterdam"
+  | "Hamburg"
+  | "Dusseldorf";
+
 export interface IOfferLocation {
   latitude: number;
   longitude: number;
@@ -21,7 +29,7 @@ export interface IOffer {
   title: string;
   description: string;
   publishDate: string;
-  city: string;
+  city: TCity;
   preview: string;
   images: string[];
   isPremium: boolean;

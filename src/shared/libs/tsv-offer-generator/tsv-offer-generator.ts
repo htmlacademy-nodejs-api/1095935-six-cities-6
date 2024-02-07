@@ -32,10 +32,10 @@ export class TSVOfferGenerator implements IOfferGenerator {
       .join(";");
     const isPremium = Math.random() > 0.5;
     const isFavorite = Math.random() > 0.5;
-    const rating = getRandomeNumber();
+    const rating = getRandomeNumber(1, 5);
     const entire = getRandomItem(this.mockData.entires);
-    const bedrooms = getRandomeNumber();
-    const adults = getRandomeNumber();
+    const bedrooms = getRandomeNumber(1, 8);
+    const adults = getRandomeNumber(1, 10);
     const price = getRandomeNumber(MIN_PRICE, MAX_PRICE);
     const features = getRandomItems(this.mockData.features).join(";");
     const reviewsAmount = getRandomeNumber();
