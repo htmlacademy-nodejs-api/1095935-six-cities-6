@@ -1,0 +1,47 @@
+openapi: 3.1.0
+
+comments:
+  get:
+    tags:
+      - comments
+    summary: Получение списка комментариев
+    description: Возвращает список из 50 последних комментариев.
+
+    responses:
+      "200":
+        description: Список комментариев получен.
+        content:
+          application-json:
+            schema:
+              type: array
+              items:
+                $ref: "./comment.components.yml#/components/schemas/comment"
+
+      "404":
+        description: Комментариев не найдено
+
+  post:
+    tags:
+      - comments
+    summary: Создать новый комментарий
+    description: Создаёт новый комментарий.
+
+    requestBody:
+      required: true
+      description: Данные для создания комментария
+
+      content:
+        application-json:
+          schema:
+            $ref: "./comment.components.yml#/components/schemas/newComment"
+
+    responses:
+      "200":
+        description: Комментарий успешно добавлен.
+        content:
+          application-json:
+            schema:
+              $ref: "./comment.components.yml#/components/schemas/comment"
+
+      "400":
+        description: Ошибка валидации данных.

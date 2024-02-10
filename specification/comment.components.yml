@@ -1,0 +1,40 @@
+openapi: 3.1.0
+
+components:
+  schemas:
+    newComment:
+      type: object
+
+      properties:
+        text:
+          type: string
+          description: Текст комментария
+          min: 5
+          max: 1024
+          example: Какой-то комментарий
+
+        rating:
+          type: number
+          description: Рейтинг
+          example: 5
+
+        author:
+          type: object
+          description: Автор комментария
+          $ref: "./user.components.yml#/components/schemas/user"
+
+      required:
+        - text
+        - rating
+        - author
+
+    comment:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/newComment"
+
+      properties:
+        publishDate:
+          type: string
+          description: Дата публикации комментария
+          example: 2024-01-31T17:36:02.554Z
