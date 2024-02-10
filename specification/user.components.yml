@@ -1,0 +1,79 @@
+openapi: 3.1.0
+
+components:
+  schemas:
+    user:
+      type: object
+
+      properties:
+        name:
+          type: string
+          description: Имя пользователя
+          min: 1
+          max: 15
+          example: JohnDoe
+
+        email:
+          type: string
+          description: Email пользователя
+          example: JohnDoe@mail.ru
+
+        avatar:
+          type: string
+          description: Аватар пользователя
+          default: https://loremflickr.com/200/200/portret
+          example: https://loremflickr.com/200/200/portret
+
+        status:
+          type: string
+          description: Статус пользователя
+          example: regular
+          enum:
+            - regular
+            - pro
+
+    registerUser:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/user"
+
+      properties:
+        password:
+          type: string
+          description: Пароль пользователя
+          min: 6
+          max: 12
+          example: 123456
+
+      required:
+        - name
+        - email
+        - status
+        - password
+
+    loginUser:
+      type: object
+
+      properties:
+        email:
+          type: string
+          description: Email пользователя
+          example: JohnDoe@mail.ru
+
+        password:
+          type: string
+          description: Пароль пользователя
+          example: 123456
+
+      required:
+        - email
+        - password
+
+    userToken:
+      type: object
+
+      properties:
+        token:
+          type: string
+          description: Авторизационный токен пользователя
+          example: Sm9obkRvZUBtYWlsLnJ1

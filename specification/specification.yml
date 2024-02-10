@@ -1,0 +1,20 @@
+openapi: 3.1.0
+
+info:
+  title: API сервер для проекта «Шесть городов»
+  description: Список ресурсов и маршрутов сервера «Шесть городов».
+  version: 2.0.0
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+tags:
+  - name: offers
+    description: Действия с объявлениями.
+  - name: comments
+    description: Действия с комментариями.
+  - name: users
+    description: Действия с пользователем.
+
+paths:
+  $ref: "./user.paths.yml#/paths"
