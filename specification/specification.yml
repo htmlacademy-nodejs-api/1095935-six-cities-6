@@ -24,5 +24,16 @@ paths:
   /user/logout:
     $ref: "./user.paths.yml#/logout"
 
-  /comments/{offerId}:
+  /offers:
+    $ref: "./offer.paths.yml#/offers"
+  /offers/{offerId}:
+    $ref: "./offer.paths.yml#/offer"
+
+  /offers/{offerId}/comments:
     $ref: "./comment.paths.yml#/comments"
+
+  /offers/premium:
+    $ref: "./offer.paths.yml#/premium"
+
+  /offers/favorite:
+    $ref: "./offer.paths.yml#/favorite"

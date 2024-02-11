@@ -9,8 +9,8 @@ components:
         text:
           type: string
           description: Текст комментария
-          min: 5
-          max: 1024
+          minimum: 5
+          maximum: 1024
           example: Какой-то комментарий
 
         rating:

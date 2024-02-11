@@ -9,8 +9,8 @@ components:
         name:
           type: string
           description: Имя пользователя
-          min: 1
-          max: 15
+          minimum: 1
+          maximum: 15
           example: JohnDoe
 
         email:
@@ -41,8 +41,8 @@ components:
         password:
           type: string
           description: Пароль пользователя
-          min: 6
-          max: 12
+          minimum: 6
+          maximum: 12
           example: 123456
 
       required:
