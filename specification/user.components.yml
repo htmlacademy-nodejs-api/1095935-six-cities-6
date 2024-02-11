@@ -2,7 +2,7 @@ openapi: 3.1.0
 
 components:
   schemas:
-    user:
+    baseUser:
       type: object
 
       properties:
@@ -20,9 +20,9 @@ components:
 
         avatar:
           type: string
+          contentMediaType: image/png, image/jpg
           description: Аватар пользователя
-          default: https://loremflickr.com/200/200/portret
-          example: https://loremflickr.com/200/200/portret
+          example: avatar.jpg
 
         status:
           type: string
@@ -32,10 +32,22 @@ components:
             - regular
             - pro
 
+    user:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/baseUser"
+
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Идентификатор пользователя
+          example: gfdnjkn424n28vx
+
     registerUser:
       type: object
       allOf:
-        - $ref: "#/components/schemas/user"
+        - $ref: "#/components/schemas/baseUser"
 
       properties:
         password:

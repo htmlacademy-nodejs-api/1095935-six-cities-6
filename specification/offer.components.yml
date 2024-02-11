@@ -2,7 +2,7 @@ openapi: 3.1.0
 
 components:
   schemas:
-    offer:
+    baseOffer:
       type: object
 
       properties:
@@ -20,11 +20,6 @@ components:
           maximum: 1024
           example: Какое-то оипсание предложения
 
-        publishDate:
-          type: string
-          description: Дата публикации предложения
-          example: 2024-01-31T17:36:02.554Z
-
         city:
           type: string
           description: Город размещения
@@ -39,17 +34,21 @@ components:
 
         preview:
           type: string
-          description: Превью предложения
+          description: Превью предложения, ссылка
           example: https://loremflickr.com/320/240/mansion
 
         images:
           type: array
           items:
             type: string
-          description: Набор изображений предложения
+          description: Набор фотограций предложения, ссылки
           minimum: 6
           maximum: 6
-          example: [https://loremflickr.com/800/600/apartment]
+          example:
+            [
+              https://loremflickr.com/800/600/apartment,
+              https://loremflickr.com/800/600/apartment,
+            ]
 
         isPremium:
           type: boolean
@@ -133,9 +132,25 @@ components:
             longitude:
               type: number
 
+    offer:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/baseOffer"
+
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Идентификатор предложения
+          example: gfdnjkn424n28vx
+
+        publishDate:
+          type: string
+          description: Дата публикации предложения
+          example: 2024-01-31T17:36:02.554Z
+
     offerPreview:
       type: object
-
       allOf:
         - $ref: "#/components/schemas/offer"
 
@@ -153,14 +168,12 @@ components:
 
     offerCreate:
       type: object
-
       allOf:
-        - $ref: "#/components/schemas/offer"
+        - $ref: "#/components/schemas/baseOffer"
 
       required:
         - title
         - description
-        - publishDate
         - city
         - preview
         - images
@@ -173,5 +186,4 @@ components:
         - price
         - features
         - author
-        - reviewsAmount
         - location

@@ -15,6 +15,10 @@ tags:
     description: Действия с комментариями.
   - name: offers
     description: Действия с объявлениями.
+  - name: premium
+    description: Премиальные объявления.
+  - name: favorite
+    description: Действия с избранными объявлениями.
 
 paths:
   /user/register:

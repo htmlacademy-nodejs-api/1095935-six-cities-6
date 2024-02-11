@@ -2,7 +2,7 @@ openapi: 3.1.0
 
 components:
   schemas:
-    newComment:
+    baseComment:
       type: object
 
       properties:
@@ -23,6 +23,11 @@ components:
           description: Автор комментария
           $ref: "./user.components.yml#/components/schemas/user"
 
+    newComment:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/baseComment"
+
       required:
         - text
         - rating
@@ -31,9 +36,15 @@ components:
     comment:
       type: object
       allOf:
-        - $ref: "#/components/schemas/newComment"
+        - $ref: "#/components/schemas/baseComment"
 
       properties:
+        id:
+          type: string
+          format: uuid
+          description: Идентификатор комментария
+          example: gfdnjkn424n28vx
+
         publishDate:
           type: string
           description: Дата публикации комментария

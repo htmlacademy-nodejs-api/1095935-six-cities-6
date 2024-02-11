@@ -23,6 +23,12 @@ register:
             schema:
               $ref: "./user.components.yml#/components/schemas/user"
 
+      "400":
+        description: Ошибка валидации данных.
+
+      "403":
+        description: Повторная регистрация авторизованого пользователя запрещена.
+
       "409":
         description: Пользователь с таким email уже существует.
 
@@ -93,3 +99,6 @@ logout:
 
     "200":
       description: Сессия завершена
+
+    "401":
+      description: Пользователь не авторизова
