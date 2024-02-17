@@ -53,6 +53,14 @@ offer:
     summary: Детальная информация о предложений
     description: Возвращает детальную информация о предложении.
 
+    parameters:
+      - in: path
+        name: offerId
+        description: id предложения для получения детальной информации.
+        required: true
+        schema:
+          type: string
+
     responses:
       "200":
         description: Детальная информация о предложении получена.
@@ -61,6 +69,9 @@ offer:
             schema:
               $ref: "./offer.components.yml#/components/schemas/offer"
 
+      "404":
+        description: Предложение не найдено.
+
   delete:
     tags:
       - offers
@@ -68,7 +79,7 @@ offer:
     description: Удаляет предложение вместе с коментариями.
 
     responses:
-      "200":
+      "204":
         description: Предложение удалено успешно.
 
       "401":
@@ -159,6 +170,9 @@ favorite:
       "401":
         description: Пользователь не авторизован.
 
+      "404":
+        description: Предложение не найдено.
+
   delete:
     tags:
       - favorite
@@ -171,3 +185,6 @@ favorite:
 
       "401":
         description: Пользователь не авторизован.
+
+      "404":
+        description: Предложение не найдено.

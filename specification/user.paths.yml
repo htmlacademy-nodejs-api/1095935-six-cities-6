@@ -55,7 +55,7 @@ login:
             schema:
               $ref: "./user.components.yml#/components/schemas/userToken"
 
-      "404":
+      "400":
         description: Неверный логин или пароль.
 
   get:
@@ -97,7 +97,7 @@ logout:
           schema:
             $ref: "./user.components.yml#/components/schemas/userToken"
 
-    "200":
+    "204":
       description: Сессия завершена
 
     "401":

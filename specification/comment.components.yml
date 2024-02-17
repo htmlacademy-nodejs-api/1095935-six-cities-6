@@ -31,7 +31,6 @@ components:
       required:
         - text
         - rating
-        - author
 
     comment:
       type: object

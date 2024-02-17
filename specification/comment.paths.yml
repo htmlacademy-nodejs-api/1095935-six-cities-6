@@ -23,6 +23,14 @@ comments:
     summary: Создать новый комментарий
     description: Создаёт новый комментарий.
 
+    parameters:
+      - in: path
+        name: offerId
+        description: id предложения для создаваемого комментария.
+        required: true
+        schema:
+          type: string
+
     requestBody:
       required: true
       description: Данные для создания комментария
