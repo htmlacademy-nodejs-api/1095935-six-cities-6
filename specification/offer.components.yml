@@ -346,3 +346,19 @@ components:
             longitude:
               type: number
               example: 4.895168
+
+      required:
+        - title
+        - description
+        - city
+        - preview
+        - images
+        - isPremium
+        - isFavorite
+        - rating
+        - entire
+        - bedrooms
+        - adults
+        - price
+        - features
+        - location

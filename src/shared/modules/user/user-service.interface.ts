@@ -1,7 +1,8 @@
 import { DocumentType } from "@typegoose/typegoose";
 
-import { UserEntity } from "./user.entity.js";
 import { CreateUserDto } from "./dto/index.js";
+
+import { UserEntity } from "./user.entity.js";
 
 export interface IUserService {
   create(dto: CreateUserDto, salt: string): Promise<DocumentType<UserEntity>>;

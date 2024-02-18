@@ -25,8 +25,18 @@ components:
 
     newComment:
       type: object
-      allOf:
-        - $ref: "#/components/schemas/baseComment"
+      properties:
+        text:
+          type: string
+          description: Текст комментария
+          minimum: 5
+          maximum: 1024
+          example: Какой-то комментарий
+
+        rating:
+          type: number
+          description: Рейтинг
+          example: 5
 
       required:
         - text
