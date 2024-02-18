@@ -1,0 +1,91 @@
+openapi: 3.1.0
+
+components:
+  schemas:
+    baseUser:
+      type: object
+
+      properties:
+        name:
+          type: string
+          description: Имя пользователя
+          minimum: 1
+          maximum: 15
+          example: JohnDoe
+
+        email:
+          type: string
+          description: Email пользователя
+          example: JohnDoe@mail.ru
+
+        avatar:
+          type: string
+          contentMediaType: image/png, image/jpg
+          description: Аватар пользователя
+          example: avatar.jpg
+
+        status:
+          type: string
+          description: Статус пользователя
+          example: regular
+          enum:
+            - regular
+            - pro
+
+    user:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/baseUser"
+
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Идентификатор пользователя
+          example: gfdnjkn424n28vx
+
+    registerUser:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/baseUser"
+
+      properties:
+        password:
+          type: string
+          description: Пароль пользователя
+          minimum: 6
+          maximum: 12
+          example: 123456
+
+      required:
+        - name
+        - email
+        - status
+        - password
+
+    loginUser:
+      type: object
+
+      properties:
+        email:
+          type: string
+          description: Email пользователя
+          example: JohnDoe@mail.ru
+
+        password:
+          type: string
+          description: Пароль пользователя
+          example: 123456
+
+      required:
+        - email
+        - password
+
+    userToken:
+      type: object
+
+      properties:
+        token:
+          type: string
+          description: Авторизационный токен пользователя
+          example: Sm9obkRvZUBtYWlsLnJ1

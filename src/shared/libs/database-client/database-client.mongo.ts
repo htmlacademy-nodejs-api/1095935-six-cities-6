@@ -2,7 +2,7 @@ import { setTimeout } from "node:timers/promises";
 import * as Mongoose from "mongoose";
 import { inject, injectable } from "inversify";
 
-import { Component } from "../../interfaces/component.enum.js";
+import { Component } from "../../interfaces/index.js";
 
 import { ILogger } from "../logger/index.js";
 

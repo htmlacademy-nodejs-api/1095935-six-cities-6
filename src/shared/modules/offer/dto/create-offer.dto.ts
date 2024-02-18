@@ -14,13 +14,10 @@ export class CreateOfferDto {
   preview: string;
   images: string[];
   isPremium: boolean;
-  isFavorite: boolean;
-  rating: number;
   entire: TOfferEntire;
   bedrooms: number;
   adults: number;
   price: number;
   features: TOfferFeature[];
-  reviewsAmount: number;
   location: IOfferLocation;
 }

@@ -1,7 +1,7 @@
 import { Container } from "inversify";
 import { types } from "@typegoose/typegoose";
 
-import { Component } from "../../interfaces/component.enum.js";
+import { Component } from "../../interfaces/index.js";
 
 import { IOfferService } from "./offer-service.interface.js";
 import { OfferService } from "./offer.service.js";

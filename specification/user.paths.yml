@@ -1,0 +1,104 @@
+openapi: 3.1.0
+
+register:
+  post:
+    tags:
+      - users
+    summary: Регистрация пользователя
+    description: Регистрирует нового пользователя.
+
+    requestBody:
+      required: true
+      description: Данные для создания нового пользователя.
+      content:
+        application/json:
+          schema:
+            $ref: "./user.components.yml#/components/schemas/registerUser"
+
+    responses:
+      "201":
+        description: Пользователь зарегистрирован.
+        content:
+          application/json:
+            schema:
+              $ref: "./user.components.yml#/components/schemas/user"
+
+      "400":
+        description: Ошибка валидации данных.
+
+      "403":
+        description: Повторная регистрация авторизованого пользователя запрещена.
+
+      "409":
+        description: Пользователь с таким email уже существует.
+
+login:
+  post:
+    tags:
+      - users
+    summary: Авторизация пользователя
+    description: Авторизует пользователя по логину и паролю.
+
+    requestBody:
+      required: true
+      description: Данные для авторизации пользователя.
+      content:
+        application/json:
+          schema:
+            $ref: "./user.components.yml#/components/schemas/loginUser"
+
+    responses:
+      "200":
+        description: Пользователь авторизован.
+        content:
+          application/json:
+            schema:
+              $ref: "./user.components.yml#/components/schemas/userToken"
+
+      "400":
+        description: Неверный логин или пароль.
+
+  get:
+    tags:
+      - users
+    summary: Проверка состояния пользователя
+    description: Возвращает информацию по авторизованному пользователю.
+
+    requestBody:
+      required: true
+      description: Данные для полчения информации о пользователе.
+      content:
+        application/json:
+          schema:
+            $ref: "./user.components.yml#/components/schemas/userToken"
+
+    "200":
+      description: Пользователь авторизован
+      content:
+        application-json:
+          schema:
+            $ref: "./user.components.yml#/components/schemas/user"
+
+    "401":
+      description: Пользователь не авторизован.
+
+logout:
+  post:
+    tags:
+      - users
+    summary: Выход пользователя
+    description: Завершает сессию пользователя.
+
+    requestBody:
+      required: true
+      description: Данные для завершения сессии.
+      content:
+        application/json:
+          schema:
+            $ref: "./user.components.yml#/components/schemas/userToken"
+
+    "204":
+      description: Сессия завершена
+
+    "401":
+      description: Пользователь не авторизова

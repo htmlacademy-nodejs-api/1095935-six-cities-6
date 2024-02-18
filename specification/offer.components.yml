@@ -1,0 +1,364 @@
+openapi: 3.1.0
+
+components:
+  schemas:
+    baseOffer:
+      type: object
+
+      properties:
+        title:
+          type: string
+          description: Наименование предложения
+          minimum: 10
+          maximum: 100
+          example: Какой-то заголовок предложения
+
+        description:
+          type: string
+          description: Расширенное описание предложения
+          minimum: 20
+          maximum: 1024
+          example: Какое-то оипсание предложения
+
+        city:
+          type: string
+          description: Город размещения
+          example: Amsterdam
+          enum:
+            - "Paris"
+            - "Cologne"
+            - "Brussels"
+            - "Amsterdam"
+            - "Hamburg"
+            - "Dusseldorf"
+
+        preview:
+          type: string
+          description: Превью предложения, ссылка
+          example: https://loremflickr.com/320/240/mansion
+
+        images:
+          type: array
+          items:
+            type: string
+          description: Набор фотограций предложения, ссылки
+          minimum: 6
+          maximum: 6
+          example:
+            [
+              https://loremflickr.com/800/600/apartment,
+              https://loremflickr.com/800/600/apartment,
+            ]
+
+        isPremium:
+          type: boolean
+          description: Признак премиальности предложения
+          example: true
+
+        isFavorite:
+          type: boolean
+          description: Признак того, что предложение в избранном у ползователя
+          example: true
+
+        rating:
+          type: number
+          description: Рейтинг у предложения
+          minimum: 1
+          maximum: 5
+          example: 4
+
+        entire:
+          type: string
+          description: Тип жилья
+          example: house
+          enum:
+            - "apartment"
+            - "house"
+            - "room"
+            - "hotel"
+
+        bedrooms:
+          type: integer
+          description: Количество комнат
+          minimum: 1
+          maximum: 8
+          example: 3
+
+        adults:
+          type: integer
+          description: Количество гостей
+          minimum: 1
+          maximum: 10
+          example: 4
+
+        price:
+          type: number
+          description: Стоимость аренды
+          minimum: 100
+          maximum: 100000
+          example: 12000
+
+        features:
+          type: array
+          items:
+            type: string
+          description: Удобства в номере
+          example: [Breakfast, Air conditioning]
+          enum:
+            - "Breakfast"
+            - "Air conditioning"
+            - "Laptop friendly workspace"
+            - "Baby seat"
+            - "Washer"
+            - "Towels"
+            - "Fridge"
+
+        author:
+          type: object
+          description: Автор предложения
+          $ref: "./user.components.yml#/components/schemas/user"
+
+        reviewsAmount:
+          type: number
+          description: Количество комментариев у предложения
+          example: 10
+
+        location:
+          type: object
+          description: Координаты предложения
+          properties:
+            latitude:
+              type: number
+              example: 52.370216
+            longitude:
+              type: number
+              example: 4.895168
+
+    offer:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/baseOffer"
+
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Идентификатор предложения
+          example: gfdnjkn424n28vx
+
+        publishDate:
+          type: string
+          format: Date
+          description: Дата публикации предложения
+          example: 2024-01-31T17:36:02.554Z
+
+    offerPreview:
+      type: object
+
+      properties:
+        title:
+          type: string
+          description: Наименование предложения
+          minimum: 10
+          maximum: 100
+          example: Какой-то заголовок предложения
+
+        city:
+          type: string
+          description: Город размещения
+          example: Amsterdam
+          enum:
+            - "Paris"
+            - "Cologne"
+            - "Brussels"
+            - "Amsterdam"
+            - "Hamburg"
+            - "Dusseldorf"
+
+        preview:
+          type: string
+          description: Превью предложения, ссылка
+          example: https://loremflickr.com/320/240/mansion
+
+        isPremium:
+          type: boolean
+          description: Признак премиальности предложения
+          example: true
+
+        isFavorite:
+          type: boolean
+          description: Признак того, что предложение в избранном у ползователя
+          example: true
+
+        rating:
+          type: number
+          description: Рейтинг у предложения
+          minimum: 1
+          maximum: 5
+          example: 4
+
+        entire:
+          type: string
+          description: Тип жилья
+          example: house
+          enum:
+            - "apartment"
+            - "house"
+            - "room"
+            - "hotel"
+
+        price:
+          type: number
+          description: Стоимость аренды
+          minimum: 100
+          maximum: 100000
+          example: 12000
+
+        reviewsAmount:
+          type: number
+          description: Количество комментариев у предложения
+          example: 10
+
+        publishDate:
+          type: string
+          format: Date
+          description: Дата публикации предложения
+          example: 2024-01-31T17:36:02.554Z
+
+    offerCreate:
+      type: object
+
+      properties:
+        title:
+          type: string
+          description: Наименование предложения
+          minimum: 10
+          maximum: 100
+          example: Какой-то заголовок предложения
+
+        description:
+          type: string
+          description: Расширенное описание предложения
+          minimum: 20
+          maximum: 1024
+          example: Какое-то оипсание предложения
+
+        city:
+          type: string
+          description: Город размещения
+          example: Amsterdam
+          enum:
+            - "Paris"
+            - "Cologne"
+            - "Brussels"
+            - "Amsterdam"
+            - "Hamburg"
+            - "Dusseldorf"
+
+        preview:
+          type: string
+          description: Превью предложения, ссылка
+          example: https://loremflickr.com/320/240/mansion
+
+        images:
+          type: array
+          items:
+            type: string
+          description: Набор фотограций предложения, ссылки
+          minimum: 6
+          maximum: 6
+          example:
+            [
+              https://loremflickr.com/800/600/apartment,
+              https://loremflickr.com/800/600/apartment,
+            ]
+
+        isPremium:
+          type: boolean
+          description: Признак премиальности предложения
+          example: true
+
+        isFavorite:
+          type: boolean
+          description: Признак того, что предложение в избранном у ползователя
+          example: true
+
+        rating:
+          type: number
+          description: Рейтинг у предложения
+          minimum: 1
+          maximum: 5
+          example: 4
+
+        entire:
+          type: string
+          description: Тип жилья
+          example: house
+          enum:
+            - "apartment"
+            - "house"
+            - "room"
+            - "hotel"
+
+        bedrooms:
+          type: integer
+          description: Количество комнат
+          minimum: 1
+          maximum: 8
+          example: 3
+
+        adults:
+          type: integer
+          description: Количество гостей
+          minimum: 1
+          maximum: 10
+          example: 4
+
+        price:
+          type: number
+          description: Стоимость аренды
+          minimum: 100
+          maximum: 100000
+          example: 12000
+
+        features:
+          type: array
+          items:
+            type: string
+          description: Удобства в номере
+          example: [Breakfast, Air conditioning]
+          enum:
+            - "Breakfast"
+            - "Air conditioning"
+            - "Laptop friendly workspace"
+            - "Baby seat"
+            - "Washer"
+            - "Towels"
+            - "Fridge"
+
+        location:
+          type: object
+          description: Координаты предложения
+          properties:
+            latitude:
+              type: number
+              example: 52.370216
+            longitude:
+              type: number
+              example: 4.895168
+
+      required:
+        - title
+        - description
+        - city
+        - preview
+        - images
+        - isPremium
+        - isFavorite
+        - rating
+        - entire
+        - bedrooms
+        - adults
+        - price
+        - features
+        - location

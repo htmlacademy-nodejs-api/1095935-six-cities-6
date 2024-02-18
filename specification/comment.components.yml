@@ -1,0 +1,60 @@
+openapi: 3.1.0
+
+components:
+  schemas:
+    baseComment:
+      type: object
+
+      properties:
+        text:
+          type: string
+          description: Текст комментария
+          minimum: 5
+          maximum: 1024
+          example: Какой-то комментарий
+
+        rating:
+          type: number
+          description: Рейтинг
+          example: 5
+
+        author:
+          type: object
+          description: Автор комментария
+          $ref: "./user.components.yml#/components/schemas/user"
+
+    newComment:
+      type: object
+      properties:
+        text:
+          type: string
+          description: Текст комментария
+          minimum: 5
+          maximum: 1024
+          example: Какой-то комментарий
+
+        rating:
+          type: number
+          description: Рейтинг
+          example: 5
+
+      required:
+        - text
+        - rating
+
+    comment:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/baseComment"
+
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Идентификатор комментария
+          example: gfdnjkn424n28vx
+
+        publishDate:
+          type: string
+          description: Дата публикации комментария
+          example: 2024-01-31T17:36:02.554Z

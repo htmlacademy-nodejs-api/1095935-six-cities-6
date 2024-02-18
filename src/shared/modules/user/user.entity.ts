@@ -8,6 +8,8 @@ import {
 import { IUser, TUserStatus } from "../../interfaces/user.js";
 import { createSHA256 } from "../../utils/index.js";
 
+import { DEFAULT_USER_STATUS } from "./user.constants.js";
+
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export interface UserEntity extends defaultClasses.Base {}
 
@@ -22,7 +24,7 @@ export class UserEntity extends defaultClasses.TimeStamps implements IUser {
   @prop({ required: true })
   public password: string;
 
-  @prop({ required: true, default: "regular" })
+  @prop({ required: true, default: DEFAULT_USER_STATUS })
   public status: TUserStatus;
 
   @prop({ required: true, unique: true })

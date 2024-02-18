@@ -1,0 +1,190 @@
+openapi: 3.1.0
+
+offers:
+  get:
+    tags:
+      - offers
+    summary: Получение списка предложений
+    description: Возвращает список из 60 последних предложений.
+
+    responses:
+      "200":
+        description: Список предложений получен.
+        content:
+          application-json:
+            schema:
+              type: array
+              items:
+                $ref: "./offer.components.yml#/components/schemas/offerPreview"
+
+  post:
+    tags:
+      - offers
+    summary: Создать новое предложение
+    description: Создаёт новое предложение.
+
+    requestBody:
+      required: true
+      description: Данные для создания предложение
+
+      content:
+        application-json:
+          schema:
+            $ref: "./offer.components.yml#/components/schemas/offerCreate"
+
+    responses:
+      "201":
+        description: Предложение успешно добавлено.
+        content:
+          application-json:
+            schema:
+              $ref: "./offer.components.yml#/components/schemas/offer"
+
+      "400":
+        description: Ошибка валидации данных.
+
+      "401":
+        description: Пользователь не авторизован.
+
+offer:
+  get:
+    tags:
+      - offers
+    summary: Детальная информация о предложений
+    description: Возвращает детальную информация о предложении.
+
+    parameters:
+      - in: path
+        name: offerId
+        description: id предложения для получения детальной информации.
+        required: true
+        schema:
+          type: string
+
+    responses:
+      "200":
+        description: Детальная информация о предложении получена.
+        content:
+          application-json:
+            schema:
+              $ref: "./offer.components.yml#/components/schemas/offer"
+
+      "404":
+        description: Предложение не найдено.
+
+  delete:
+    tags:
+      - offers
+    summary: Удалить предложение
+    description: Удаляет предложение вместе с коментариями.
+
+    responses:
+      "204":
+        description: Предложение удалено успешно.
+
+      "401":
+        description: Пользователь не авторизован.
+
+      "403":
+        description: Доступ запрещён.
+
+  patch:
+    tags:
+      - offers
+    summary: Обновить предложение
+    description: Обновляет предложение.
+
+    requestBody:
+      required: true
+      description: Данные для редактирования предложения
+
+      content:
+        application-json:
+          schema:
+            $ref: "./offer.components.yml#/components/schemas/offer"
+
+    responses:
+      "200":
+        description: Предложение обновлено успешно.
+        content:
+          application-json:
+            schema:
+              $ref: "./offer.components.yml#/components/schemas/offer"
+
+      "400":
+        description: Ошибка валидации данных.
+
+      "401":
+        description: Пользователь не авторизован.
+
+      "403":
+        description: Доступ запрещён.
+
+premium:
+  get:
+    tags:
+      - premium
+    summary: Получение премиальных предложений
+    description: Возвращает список из 3 последних премиальных предложений.
+
+    responses:
+      "200":
+        description: Список премиальных предложений получен.
+        content:
+          application-json:
+            schema:
+              type: array
+              items:
+                $ref: "./offer.components.yml#/components/schemas/offerPreview"
+
+favorite:
+  get:
+    tags:
+      - favorite
+    summary: Получение избранных предложений
+    description: Возвращает список всех избраннх предложений.
+
+    responses:
+      "200":
+        description: Список премиальных предложений получен.
+        content:
+          application-json:
+            schema:
+              type: array
+              items:
+                $ref: "./offer.components.yml#/components/schemas/offerPreview"
+
+      "401":
+        description: Пользователь не авторизован.
+
+  put:
+    tags:
+      - favorite
+    summary: Добавление предложения в избранное
+    description: Добавляет предложения в список избранного.
+
+    responses:
+      "200":
+        description: Предложение успешно добавлено в список избранного.
+
+      "401":
+        description: Пользователь не авторизован.
+
+      "404":
+        description: Предложение не найдено.
+
+  delete:
+    tags:
+      - favorite
+    summary: Удаление предложения из избранного
+    description: Удаляет предложения из списка избранного.
+
+    responses:
+      "200":
+        description: Предложение успешно удалено из списка избранного.
+
+      "401":
+        description: Пользователь не авторизован.
+
+      "404":
+        description: Предложение не найдено.
