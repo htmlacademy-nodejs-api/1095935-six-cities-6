@@ -2,10 +2,22 @@ openapi: 3.1.0
 
 components:
   schemas:
-    baseOffer:
+    offer:
       type: object
 
       properties:
+        id:
+          type: string
+          format: uuid
+          description: Идентификатор предложения
+          example: gfdnjkn424n28vx
+
+        publishDate:
+          type: string
+          format: Date
+          description: Дата публикации предложения
+          example: 2024-01-31T17:36:02.554Z
+
         title:
           type: string
           description: Наименование предложения
@@ -133,24 +145,6 @@ components:
             longitude:
               type: number
               example: 4.895168
-
-    offer:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/baseOffer"
-
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Идентификатор предложения
-          example: gfdnjkn424n28vx
-
-        publishDate:
-          type: string
-          format: Date
-          description: Дата публикации предложения
-          example: 2024-01-31T17:36:02.554Z
 
     offerPreview:
       type: object
