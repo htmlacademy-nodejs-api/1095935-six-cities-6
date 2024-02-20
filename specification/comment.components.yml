@@ -2,10 +2,21 @@ openapi: 3.1.0
 
 components:
   schemas:
-    baseComment:
+    comment:
       type: object
 
       properties:
+        id:
+          type: string
+          format: uuid
+          description: Идентификатор комментария
+          example: gfdnjkn424n28vx
+
+        publishDate:
+          type: string
+          description: Дата публикации комментария
+          example: 2024-01-31T17:36:02.554Z
+
         text:
           type: string
           description: Текст комментария
@@ -41,20 +52,3 @@ components:
       required:
         - text
         - rating
-
-    comment:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/baseComment"
-
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Идентификатор комментария
-          example: gfdnjkn424n28vx
-
-        publishDate:
-          type: string
-          description: Дата публикации комментария
-          example: 2024-01-31T17:36:02.554Z
